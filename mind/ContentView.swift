@@ -45,7 +45,7 @@ struct ContentView: View {
     }
     
     func widthThatBestFits(cardCount: Int) -> CGFloat {
-        return CGFloat(15*(emojis[emojiSetIndex].count-cardCount)+35)
+        return CGFloat(15*(emojis[emojiSetIndex].count-cardCount)+30)
     }
     
     func bottomButton(index: Int, name: String, underName: String) -> some View {
