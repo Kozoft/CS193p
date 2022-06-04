@@ -7,7 +7,7 @@
 
 import SwiftUI
 
- @main
+@main
 struct mindApp: App {
     let game = EmojiMemoryGame()
     var body: some Scene {

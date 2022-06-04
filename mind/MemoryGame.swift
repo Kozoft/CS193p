@@ -12,6 +12,8 @@ struct MemoryGame<CardContent> where CardContent: Equatable{
     
     private(set) var cards: Array<Card>
     private var upCardIndex: Int?
+    private(set) var theme: Theme
+    private(set) var score = 0
     
     mutating func choose(_ card: Card) {
         if let chosenIndex = cards.firstIndex(where: { $0.id == card.id }),
@@ -21,6 +23,9 @@ struct MemoryGame<CardContent> where CardContent: Equatable{
                 if cards[chosenIndex].content == cards[potentialMatchIndex].content {
                     cards[chosenIndex].isMatched = true
                     cards[potentialMatchIndex].isMatched = true
+                    score += 2
+                } else {
+                    score -= 1
                 }
                 upCardIndex = nil
             } else {
@@ -31,17 +36,23 @@ struct MemoryGame<CardContent> where CardContent: Equatable{
             }
             cards[chosenIndex].isFaceUp.toggle()
         }
-        print("\(cards)")
+//        print("\(cards)")
     }
     
-    init(numberOfPairsOfCards: Int, createCardContent: (Int) -> CardContent ){
+    init(themeToSetInTheGame: Theme, createCardContent: (Int) -> CardContent ){
         cards = Array<Card>()
+        theme = themeToSetInTheGame
+        var actualnumberOfPairs = theme.numberOfPairs
+        if actualnumberOfPairs > theme.emojiSet.count {
+            actualnumberOfPairs = theme.emojiSet.count
+        }
         // add numberOfPairsOfCards*2 cards to card array
-        for pairIndex in 0..<numberOfPairsOfCards {
+        for pairIndex in 0..<actualnumberOfPairs {
             let content = createCardContent(pairIndex)
             cards.append(Card(content: content, id: pairIndex*2))
             cards.append(Card(content: content, id: pairIndex*2+1))
         }
+        cards.shuffle()
     }
     
     struct Card: Identifiable {
