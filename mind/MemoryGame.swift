@@ -25,7 +25,14 @@ struct MemoryGame<CardContent> where CardContent: Equatable{
                     cards[potentialMatchIndex].isMatched = true
                     score += 2
                 } else {
-                    score -= 1
+                    if cards[chosenIndex].beenSeen {
+                        score -= 1
+                    }
+                    if cards[potentialMatchIndex].beenSeen {
+                        score -= 1
+                    }
+                    cards[chosenIndex].beenSeen = true
+                    cards[potentialMatchIndex].beenSeen = true
                 }
                 upCardIndex = nil
             } else {
@@ -33,10 +40,11 @@ struct MemoryGame<CardContent> where CardContent: Equatable{
                     cards[index].isFaceUp = false
                 }
                 upCardIndex = chosenIndex
+//                print("Been seen: \(cards[chosenIndex].beenSeen)")
             }
             cards[chosenIndex].isFaceUp.toggle()
         }
-//        print("\(cards)")
+        print("\(cards)")
     }
     
     init(themeToSetInTheGame: Theme, createCardContent: (Int) -> CardContent ){
@@ -58,6 +66,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable{
     struct Card: Identifiable {
         var isFaceUp: Bool = false
         var isMatched: Bool = false
+        var beenSeen: Bool = false
         var content: CardContent
         var id: Int
     }
