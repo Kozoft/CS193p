@@ -6,6 +6,8 @@
 //
 // ViewModel
 
+// TODO: implement Extra Credit №4
+
 import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
@@ -37,11 +39,12 @@ class EmojiMemoryGame: ObservableObject {
         Theme(name: "3 emojis no pairs", color: "gray",
                   emojiSet: ["🚲", "🚴🏻‍♀️", "🚳"]),
         // 7 random numberOfPairs
-        Theme(name: "3 emojis no pairs", color: "gray",
-              emojiSet: ["🚲", "🚴🏻‍♀️", "🚳"], randomNumberOfPairs: true),
-        // 8 gradient
-        Theme(name: "3 emojis no pairs", color: "gray", gradient: "teal",
-              emojiSet: ["🚲", "🚴🏻‍♀️", "🚳"], randomNumberOfPairs: true),
+        Theme(name: "random numberOfPairs", color: "gray",
+              emojiSet: ["🚲", "🚴🏻‍♀️", "🚳", "🚗", "🚙", "🏎", "🚕", "🚓", "🚘", "🚖", "🚔", "🚠", "🚡", "🏁"],
+              randomNumberOfPairs: true),
+        // 8 gradient no pairs
+        Theme(name: "gradient no pairs", color: "gray", gradient: "teal",
+              emojiSet: ["🚲", "🚴🏻‍♀️", "🚳"]),
     ]
     
     static func createMemoryGame(theme: Theme) -> MemoryGame<String> {
