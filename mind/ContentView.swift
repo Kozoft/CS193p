@@ -12,6 +12,10 @@ struct ContentView: View {
     @ObservedObject var viewModel: EmojiMemoryGame
     
     var body: some View {
+        let newGradient = LinearGradient(
+            gradient: Gradient(colors: [viewModel.color, viewModel.gradient]),
+            startPoint: .top,
+            endPoint: .bottom)
         VStack {
             HStack{
                 Spacer()
@@ -23,7 +27,7 @@ struct ContentView: View {
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]) {
                     ForEach(viewModel.cards) { card in
-                        CardView(card: card)
+                        CardView(card: card, gradient: newGradient)
                             .aspectRatio(2/3, contentMode: .fit)
                             .onTapGesture {
                                 viewModel.choose(card)
@@ -50,6 +54,7 @@ struct ContentView: View {
     
     struct CardView: View {
         let card: MemoryGame<String>.Card
+        let gradient: LinearGradient
         
         var body: some View {
             ZStack {
@@ -61,7 +66,7 @@ struct ContentView: View {
                 } else if card.isMatched {
                     shape.opacity(0.0)
                 } else {
-                    shape.fill()
+                    shape.fill(gradient)
                 }
             }
         }

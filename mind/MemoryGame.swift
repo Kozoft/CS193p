@@ -40,11 +40,9 @@ struct MemoryGame<CardContent> where CardContent: Equatable{
                     cards[index].isFaceUp = false
                 }
                 upCardIndex = chosenIndex
-//                print("Been seen: \(cards[chosenIndex].beenSeen)")
             }
             cards[chosenIndex].isFaceUp.toggle()
         }
-        print("\(cards)")
     }
     
     init(themeToSetInTheGame: Theme, createCardContent: (Int) -> CardContent ){

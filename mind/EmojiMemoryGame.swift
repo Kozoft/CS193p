@@ -12,25 +12,36 @@ class EmojiMemoryGame: ObservableObject {
     
     // Add new theme here with a one line of code
     static var themes: Array<Theme> = [
+        // 0
         Theme(name: "Cars", numberOfPairs: 5, color: "gray",
                   emojiSet: ["🚲", "🚴🏻‍♀️", "🚳", "🚵🏻‍♀️", "🌀"]),
+        // 1
         Theme(name: "Planes", numberOfPairs: 6, color: "skyBlue",
                   emojiSet: ["♲", "♳", "♽", "🙃", "♺", "♹"]),
-        // less pairs than emojis
-        Theme(name: "Stars 8", numberOfPairs: 4, color: "red",
+        // 2 less pairs than emojis
+        Theme(name: "Stars 4 from 8", numberOfPairs: 4, color: "red",
                   emojiSet: ["🚗", "🚙", "🏎", "🚕", "🚓", "🚘", "🚖", "🚔"]),
-        // more pairs than emojis
+        // 3 more pairs than emojis
         Theme(name: "Stripes 10", numberOfPairs: 50, color: "blue",
                   emojiSet: ["⛴", "🛳", "🚢", "🏴‍☠️", "⚓️"]),
-        // wrong color
+        // 4 wrong color
         Theme(name: "Joints", numberOfPairs: 3, color: "fuchsia",
                   emojiSet: ["🚀", "🛸", "📦", "🎡", "⚯", "𝌧"]),
-        // all emojis available
-        Theme(name: "Twixes all in", numberOfPairs: 8, color: "orange",
+        // 5 all emojis available
+        Theme(name: "Twixes all in", numberOfPairs: 3, color: "orange",
                   emojiSet: [
                     "🚲", "🚴🏻‍♀️", "🚳", "🚵🏻‍♀️", "🌀", "♲", "♳", "♽", "🙃", "♺", "♹",
                     "🚗", "🚙", "🏎", "🚕", "🚓", "🚘", "🚖", "🚔", "🚠", "🚡", "🏁",
                     "⛴", "🛳", "🚢", "🏴‍☠️", "⚓️", "🚀", "🛸", "📦", "🎡", "⚯", "𝌧",]),
+        // 6 no numberOfPairs
+        Theme(name: "3 emojis no pairs", color: "gray",
+                  emojiSet: ["🚲", "🚴🏻‍♀️", "🚳"]),
+        // 7 random numberOfPairs
+        Theme(name: "3 emojis no pairs", color: "gray",
+              emojiSet: ["🚲", "🚴🏻‍♀️", "🚳"], randomNumberOfPairs: true),
+        // 8 gradient
+        Theme(name: "3 emojis no pairs", color: "gray", gradient: "teal",
+              emojiSet: ["🚲", "🚴🏻‍♀️", "🚳"], randomNumberOfPairs: true),
     ]
     
     static func createMemoryGame(theme: Theme) -> MemoryGame<String> {
@@ -38,11 +49,11 @@ class EmojiMemoryGame: ObservableObject {
         var themeToSet = theme
         themeToSet.emojiSet.shuffle()
         return MemoryGame<String>(themeToSetInTheGame: themeToSet) { pairIndex in
-            theme.emojiSet[pairIndex]
+            themeToSet.emojiSet[pairIndex]
         }
     }
     
-    @Published private var model: MemoryGame<String> = createMemoryGame(theme: themes.randomElement()!)
+    @Published private var model: MemoryGame<String> = createMemoryGame(theme: themes[8]) //(theme: themes.randomElement()!)
         
     var cards: Array<MemoryGame<String>.Card> {
         model.cards
@@ -56,8 +67,8 @@ class EmojiMemoryGame: ObservableObject {
         String(model.score)
     }
     
-    var color: Color {
-        switch theme.color {
+    func nameToColor(name: String) -> Color {
+        switch name {
         case "gray": return .gray
         case "green": return .green
         case "red": return .red
@@ -77,6 +88,19 @@ class EmojiMemoryGame: ObservableObject {
         case "lemonYellow": return Color(hue: 0.1639, saturation: 1, brightness: 1)
         case "steelGray": return Color(white: 0.4745)
         default : return .black
+        }
+    }
+    
+    
+    var color: Color {
+        return nameToColor(name: theme.color)
+    }
+    
+    var gradient: Color {
+        if let newGradient = theme.gradient {
+            return nameToColor(name: newGradient)
+        } else {
+            return nameToColor(name: theme.color)
         }
     }
     
