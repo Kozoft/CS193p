@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3648913F2626E92E00157455 /* mindApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3648913E2626E92E00157455 /* mindApp.swift */; };
-		364891412626E92E00157455 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364891402626E92E00157455 /* ContentView.swift */; };
+		364891412626E92E00157455 /* EmojiMemoryGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364891402626E92E00157455 /* EmojiMemoryGameView.swift */; };
 		364891432626E93000157455 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 364891422626E93000157455 /* Assets.xcassets */; };
 		364891462626E93000157455 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 364891452626E93000157455 /* Preview Assets.xcassets */; };
 		364891512626E93000157455 /* mindTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364891502626E93000157455 /* mindTests.swift */; };
@@ -37,7 +37,7 @@
 /* Begin PBXFileReference section */
 		3648913B2626E92E00157455 /* mind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3648913E2626E92E00157455 /* mindApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mindApp.swift; sourceTree = "<group>"; };
-		364891402626E92E00157455 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		364891402626E92E00157455 /* EmojiMemoryGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGameView.swift; sourceTree = "<group>"; };
 		364891422626E93000157455 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		364891452626E93000157455 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		364891472626E93000157455 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				3648913E2626E92E00157455 /* mindApp.swift */,
-				364891402626E92E00157455 /* ContentView.swift */,
+				364891402626E92E00157455 /* EmojiMemoryGameView.swift */,
 				36DCD1D5283570C400D9CF9E /* MemoryGame.swift */,
 				36DCD1D7283572F600D9CF9E /* EmojiMemoryGame.swift */,
 				364891422626E93000157455 /* Assets.xcassets */,
@@ -266,7 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36DCD1D6283570C400D9CF9E /* MemoryGame.swift in Sources */,
-				364891412626E92E00157455 /* ContentView.swift in Sources */,
+				364891412626E92E00157455 /* EmojiMemoryGameView.swift in Sources */,
 				3648913F2626E92E00157455 /* mindApp.swift in Sources */,
 				36DCD1D8283572F600D9CF9E /* EmojiMemoryGame.swift in Sources */,
 			);
